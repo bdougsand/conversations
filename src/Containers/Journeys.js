@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Transition, Image } from 'semantic-ui-react';
 import { Button, View } from 'react-native';
 
-// OURS
+// FUNCTIONAL
 import { JourneyManager } from './JourneyManager';
 import { Camera } from '../Components/Camera';
 

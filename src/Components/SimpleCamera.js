@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, TouchableOpacity, CameraRoll } from 'react-nati
 import { FlexButton } from './FlexButton';
 
 
-export default class JourneyCamera extends Component {
+export default class SimpleCamera extends Component {
     state = {
         recording:  false,
         zoom:       0,
@@ -39,9 +39,9 @@ export default class JourneyCamera extends Component {
             canAudio = await this.getAudioPermissions(),
             canSave  = await this.getRollPermissions();
 
-        if ( !canImage ) { notGranted.push( 'video' ) }
-        if ( !canAudio ) { notGranted.push( 'sound' ) }
-        if ( !canSave ) { notGranted.push( 'video saving' ) }
+        if ( !canImage ) { notGranted.push( 'recording video' ) }
+        if ( !canAudio ) { notGranted.push( 'recording sound' ) }
+        if ( !canSave ) { notGranted.push( 'saving videos' ) }
 
         this.setState({
             hasPermission: canImage && canAudio && canSave,
@@ -84,6 +84,7 @@ export default class JourneyCamera extends Component {
                         uris    = {...this.state.vidURIs}
                     uris[ ID ]  = uri;
                     this.setState({ vidId: ID, vidURIs: uris, debug: uri });
+                    this.props.onStop({ vidId: ID, vidURIs: uris, debug: uri });
                 });
             });
 
@@ -129,12 +130,13 @@ export default class JourneyCamera extends Component {
 
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
-                <Text style={{ color: 'white' }}>{ message }</Text>
+                <Text style={{ color: 'black' }}>{ message }</Text>
             </View>
         );
     }
 
     renderCamera () {
+
         var {
             debug,
             recording,
@@ -146,21 +148,13 @@ export default class JourneyCamera extends Component {
 
         var recordingContent = this.renderRecordingButton( recording );
 
-        // Add this when some debugging is needed
-        // <Text style={{backgroundColor: 'white'}}>{debug}</Text>
-
         return (
             <Camera
                 ref     = {ref => { this.camera = ref; }}
-                style   = {[ styles.camera, {paddingTop: Constants.statusBarHeight} ]}
+                style   = { styles.camera }
                 type    = {direction}
                 zoom    = {zoom}>
-                <View style={{
-                    justifyContent: 'space-around',
-                    flexDirection:  'row',
-                    marginLeft:     100,
-                    marginRight:    100,
-                }}>
+                <View style={styles.topRow}>
                     <FlexButton onPress={this.toggleFacing.bind(this)}>{'FLIP'}</FlexButton>
                 </View>
                 <View style={styles.bottomRow}>
@@ -185,21 +179,28 @@ export default class JourneyCamera extends Component {
         const content = cameraScreenContent;
         return <View style={styles.container}>{content}</View>;
     }
-}  // End <JourneyCamera>
+}  // End <SimpleCamera>
 
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignContent: 'space-between',
-        backgroundColor:    'transparent',
+        alignContent:    'space-between',
+        backgroundColor: 'transparent',
     },
     camera: {
         flex: 1,
         justifyContent: 'space-between',
     },
+    topRow: {
+        justifyContent: 'space-around',
+        flexDirection:  'row',
+        marginLeft:     100,
+        marginRight:    100,
+        marginTop:      20,
+    },
     bottomRow: {
-        margin:  20,
+        margin:         10,
         flexDirection:  'row',
         justifyContent: 'space-between'
     },
@@ -217,5 +218,5 @@ const styles = StyleSheet.create({
 
 
 export {
-    JourneyCamera,
+    SimpleCamera,
 };

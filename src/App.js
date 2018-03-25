@@ -1,15 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Constants } from 'expo';
 
-// ROUTES
-import { Journeys } from './Containers/Journeys';
+// FUNCTIONAL
+import { JourneyManager } from './Containers/JourneyManager';
 
 
 export default class App extends React.Component {
   render() {
     return (
-      <View id={'webRoot'} style={styles.container}>
-        <Journeys/>
+      <View id={'webRoot'} style={[ styles.container, {paddingTop: Constants.statusBarHeight} ]}>
+        <JourneyManager/>
       </View>
     );
   }

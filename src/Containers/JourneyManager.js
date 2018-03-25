@@ -70,7 +70,7 @@ class JourneyManager extends Component {
 
         if ( stage === 'IncludesCameraOption' ) {
             return (
-                <View style={[ styles.manager, { marginTop: Constants.statusBarHeight } ]}>
+                <View style={styles.manager}>
                     <IncludesCameraOption onChoose={this.onChoose} />
                 </View>
             );

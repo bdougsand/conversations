@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Constants, Camera, Permissions } from 'expo';
-import { StyleSheet, Text, View, TouchableOpacity, CameraRoll } from 'react-native';
+import { Camera, Permissions } from 'expo';
+import { StyleSheet, Text, View, CameraRoll } from 'react-native';
 
 // PRESENTATION
 import { FlexButton } from './FlexButton';

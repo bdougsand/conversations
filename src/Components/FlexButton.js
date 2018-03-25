@@ -6,7 +6,7 @@ import { Text, TouchableOpacity } from 'react-native';
 const FlexButton = function ({ extraStyles, textStyles, onPress, children }) {
 
     extraStyles = extraStyles || {};
-    textStyles = textStyles || {};
+    textStyles  = textStyles || {};
 
     return (
         <TouchableOpacity

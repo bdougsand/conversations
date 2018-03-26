@@ -28,6 +28,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@knod/expo-simple-camera": "^1.0.2",
+    "@knod/flex-button": "^1.1.1",
     "expo": "^23.0.4",
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",

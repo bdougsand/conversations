@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 // FUNCTIONAL
-import { SimpleCamera } from '../Components/SimpleCamera';
+import { SimpleCamera } from '@knod/expo-simple-camera';
 
 // PRESENTATIONAL
-import { FlexButton } from '../Components/FlexButton';
+import { FlexButton } from '@knod/flex-button';
 
 
 const SomeComponent = function ({ onChoose, resetKey }) {
@@ -55,7 +55,7 @@ class IncludesCameraOption extends Component {
 };  // End <IncludesCameraOption>
 
 
-class JourneyManager extends Component {
+class PreCamera extends Component {
 
     state = { stage: 'IncludesCameraOption' }
 
@@ -82,7 +82,7 @@ class JourneyManager extends Component {
             return null;
         }
     }
-};  // End <JourneyManager>
+};  // End <PreCamera>
 
 
 var styles = {
@@ -105,7 +105,7 @@ var styles = {
 
 
 export {
-    JourneyManager,
+    PreCamera,
     IncludesCameraOption,
     SomeComponent,
 }

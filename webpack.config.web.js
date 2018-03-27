@@ -14,7 +14,10 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
-                plugins: [ 'react-native-web/babel' ],
+                plugins: [
+                    'react-native-web/babel',
+                    "transform-inline-environment-variables"
+                ],
                 presets: [ 'react-native' ]
             }
         }]
